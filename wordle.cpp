@@ -5,9 +5,9 @@
 #include <algorithm> 
 #include <map>
 #include <set>
-#include <unordered_set>
 #endif
 
+#include <unordered_set>
 #include "wordle.h"
 #include "dict-eng.h"
 using namespace std;
