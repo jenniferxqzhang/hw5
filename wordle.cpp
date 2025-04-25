@@ -37,7 +37,7 @@ std::set<std::string> wordle(
 
     // filter dictionary based on length of word
 
-    //std::set<std::string> filtered_dict;
+    // //std::set<std::string> filtered_dict;
     std::unordered_set<std::string> prefixes;
     for(const auto& word: dict){
         if(word.length() == in.length()){
@@ -50,7 +50,6 @@ std::set<std::string> wordle(
     }
 
     
-
     // call helper function
     wordleHelper(in, floating, dict, answers, curr_combo, 0, prefixes);
     

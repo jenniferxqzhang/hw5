@@ -45,6 +45,8 @@ bool schedule(
     sched.clear();
     // Add your code below
 
+    sched.resize(avail.size(), vector<Worker_T>(dailyNeed, INVALID_ID));
+
     // Get the number of workers from the availability matrix
     size_t k = avail[0].size();
 
@@ -77,7 +79,7 @@ bool helper(
     }
 
     // once we fill the slots for the current day, we can recursively move on to the next day
-    if (currSlot == dailyNeed){
+    if (currSlot >= dailyNeed){
         return helper(day +1, 0, shiftNum, avail, dailyNeed, maxShifts, sched);
     }
 
@@ -102,11 +104,11 @@ bool helper(
         }
 
         if(!booked){
-          // increase the worker's shift count
-          shiftNum[worker]++;
           
           // schedule the worker
           sched[day][currSlot] = worker;
+          // increase the worker's shift count
+          shiftNum[worker]++;
 
           // recurse to the next slot
           bool results = helper(day, currSlot+1, shiftNum, avail, dailyNeed, maxShifts, sched);
@@ -115,6 +117,7 @@ bool helper(
           }
 
           // backtrack if a valid schedule could not be built (ie. the return true was not hit)
+          sched[day][currSlot] = INVALID_ID;
           shiftNum[worker]--;
 
         }
