@@ -5,9 +5,11 @@
 #include <algorithm> 
 #include <map>
 #include <set>
+#include <unordered_set>
+
 #endif
 
-#include <unordered_set>
+
 #include "wordle.h"
 #include "dict-eng.h"
 using namespace std;
@@ -79,19 +81,6 @@ void wordleHelper(
         return;
     }
 
-    // // checking if the prefixes exist early on
-    // bool prefix_exists = false;
-    // for(const std::string& word : dict){
-    //   if(word.length() == in.length()&& word.substr(0, pos) == curr_combo){
-    //     prefix_exists = true;
-    //     break;
-    //   }
-    // }
-
-    // if(pos > 0 && !prefix_exists){
-    //   return;
-    //   // we do not need to keep checking
-    // }
 
     if(prefixes.find(curr_combo) == prefixes.end() && pos > 0){
       return;
