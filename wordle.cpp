@@ -49,6 +49,8 @@ std::set<std::string> wordle(
       }
     }
 
+    
+
     // call helper function
     wordleHelper(in, floating, dict, answers, curr_combo, 0, prefixes);
     
@@ -77,6 +79,20 @@ void wordleHelper(
         }
         return;
     }
+
+    // // checking if the prefixes exist early on
+    // bool prefix_exists = false;
+    // for(const std::string& word : dict){
+    //   if(word.length() == in.length()&& word.substr(0, pos) == curr_combo){
+    //     prefix_exists = true;
+    //     break;
+    //   }
+    // }
+
+    // if(pos > 0 && !prefix_exists){
+    //   return;
+    //   // we do not need to keep checking
+    // }
 
     if(prefixes.find(curr_combo) == prefixes.end() && pos > 0){
       return;
